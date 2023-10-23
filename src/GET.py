@@ -6,7 +6,7 @@ TIMEOUT=1
 
 try:
 	ip_api_response = requests.get("http://ip-api.com/json/?fields=city,lat,lon,query", timeout=TIMEOUT)
-except requests.exceptions.ConnectionError, :
+except requests.exceptions.ConnectionError:
 	print("\x1b[91mip-api.com✖\x1b[0m")
 	exit(2)
 ip_api_dict = ip_api_response.json()
