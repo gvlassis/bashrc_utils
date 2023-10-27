@@ -5,11 +5,11 @@ A pair of scripts that provide two shell functions, print_cmd_info() and print_i
 
 print_cmd_info() returns information for the command that was just run, and is meant to be used with blehook POSTEXEC.
 
-![print_cmd_info()](./print_cmd_info.png)
+![print_cmd_info()](./res/print_cmd_info.png)
 
 print_info() returns information about the initialization of Bash, as well as weather and IP information. print_info() is meant to be run near the end of .bashrc.
 
-![print_info()](./print_info.png)
+![print_info()](./res/print_info.png)
 
 The scripts were meant to be used in my personal .bashrc.
 
