@@ -15,7 +15,8 @@ print_info() returns information about the initialization of Bash, as well as we
 The scripts were meant to be used in my personal .bashrc.
 
 > Shameless plug: You can combine the scripts here with [pokecat](https://github.com/gvlassis/pokecat) to get something like below whenever you open a new shell session:
-> https://github.com/gvlassis/bashrc_utils/assets/74119653/ae6d977e-12e3-4a73-9572-1c5f66a749b1
+
+https://github.com/gvlassis/bashrc_utils/assets/74119653/ae6d977e-12e3-4a73-9572-1c5f66a749b1
 
 
 ## TODO
