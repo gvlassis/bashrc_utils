@@ -18,9 +18,12 @@ The scripts were meant to be used in my personal .bashrc.
 \-
 
 ## Installation
+
 GET.py requires requests.
 
 utils.sh assumes the use of [ble.sh](https://github.com/akinomyoga/ble.sh), [git-prompt.sh](https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh) and that load_duration_ms is set.
+
+To install, just `git -C $HOME/.local/share clone https://github.com/gvlassis/bashrc_utils.git`
 
 ## Architecture
 There are two source files, GET.py and utils.sh.
