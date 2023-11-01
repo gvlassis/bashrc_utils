@@ -2,11 +2,11 @@ import requests
 import datetime
 import socket
 
-TIMEOUT=1
+TIMEOUT=2
 
 try:
 	ip_api_response = requests.get("http://ip-api.com/json/?fields=city,lat,lon,query", timeout=TIMEOUT)
-except requests.exceptions.ConnectionError:
+except requests.exceptions.RequestException:
 	print("\x1b[91mip-api.com✖\x1b[0m")
 	exit(2)
 ip_api_dict = ip_api_response.json()
