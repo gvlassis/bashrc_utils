@@ -18,11 +18,11 @@
 function ms_to_human_friendly(){
     local ms="${1}"
 
-    # I add 500ms to round to the closest second 
-    local s="$(( ("${ms}"+500)/1000 ))"
-    local m="$(( ("${s}"+30)/60 ))"
-    local h="$(( ("${m}"+30)/60 ))"
-    local d="$(( ("${h}"+12)/24 ))"
+    # I add 500ms to round to the closest second
+    local s="$(( (${ms}+500)/1000 ))"
+    local m="$(( (${s}+30)/60 ))"
+    local h="$(( (${m}+30)/60 ))"
+    local d="$(( (${h}+12)/24 ))"
     if [ "${d}" -gt "0" ]; then
         local human_friendly="${d}d"
     elif [ "${h}" -gt "0" ]; then
@@ -71,7 +71,7 @@ function print_cmd_info(){
 }
 
 function print_info(){
-    local load_duration_human_friendly="$(ms_to_human_friendly "${load_duration_ms}")" 
+    local load_duration_human_friendly="$(ms_to_human_friendly "${load_duration_ms}")"
 
     # Otherwise local overwrites $?
     local reply
