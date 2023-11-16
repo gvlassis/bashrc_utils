@@ -1,5 +1,4 @@
 import requests
-import datetime
 import socket
 
 TIMEOUT=3
@@ -18,7 +17,7 @@ except requests.exceptions.RequestException:
 	exit(3)
 open_meteo_dict = open_meteo_response.json()
 
-hour = int(datetime.datetime.fromisoformat(open_meteo_dict["current_weather"]["time"]).strftime("%H"))
+hour = int(open_meteo_dict["current_weather"]["time"][11:13])
 
 print("%s" % (ip_api_dict["city"]))
 print("%s" % (ip_api_dict["query"]))
