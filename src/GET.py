@@ -1,3 +1,6 @@
+# To suppress macOS warning
+import warnings
+warnings.filterwarnings("ignore")
 import requests
 
 TIMEOUT=3
