@@ -54,7 +54,7 @@ function print_cmd_info(){
     local branch_decorated=$'\x1b[34;1m'"${branch}"$'\x1b[0m'
     local environment_decorated=$'\x1b[32;1m'"${CONDA_DEFAULT_ENV}"$'\x1b[0m'
     if [ -n "${branch}" ]; then
-        if [ -n "${CONDA_DEFAULT_ENV}" ]; then
+        if [ -n "${CONDA_DEFAULT_ENV+x}" ]; then
             local suffix=", ${branch_decorated}, ${environment_decorated}"
         else
             local suffix=", ${branch_decorated}"
@@ -83,5 +83,12 @@ function print_info(){
         local internet="${reply}"
     fi
 
-    printf $'\x1b[95m%s\x1b[0m, %s, \x1b[93m%s\x1b[0m@\x1b[93m%s\x1b[0m:\x1b[96;3m%s\x1b[0m%s\n' "${load_duration_human_friendly}" "${internet}" "${USER}" "${HOSTNAME}" "${PWD}"
+    local environment_decorated=$'\x1b[32;1m'"${CONDA_DEFAULT_ENV}"$'\x1b[0m'
+    if [ -n "${CONDA_DEFAULT_ENV+x}" ]; then
+        local suffix=", ${environment_decorated}"
+    else
+        local suffix=""
+    fi
+
+    printf $'\x1b[95m%s\x1b[0m, %s, \x1b[93m%s\x1b[0m@\x1b[93m%s\x1b[0m:\x1b[96;3m%s\x1b[0m%s\n' "${load_duration_human_friendly}" "${internet}" "${USER}" "${HOSTNAME}" "${PWD}" "${suffix}"
 }
