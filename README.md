@@ -33,6 +33,6 @@ To install, just `git -C $HOME/.local/share clone https://github.com/gvlassis/ba
 ## Architecture
 There are two source files, GET.py and utils.sh.
 
-GET.py uses [ip-api](https://ip-api.com/) and its geolocation service to find the public IP and the location. If ip-api.com can be reached, [Open-Meteo](https://open-meteo.com/) is used to get the weather in the location (by using longitude and latitude). For both requests, the timeout is set to 1s. The script returns the \n separated list: city, public IP, temperature, precipitation.
+GET.py uses [ip-api](https://ip-api.com/) and its geolocation service to find the public IP and the location. If ip-api.com can be reached, [Open-Meteo](https://open-meteo.com/) is used to get the weather in the location (by using longitude and latitude). For both requests, the timeout is set to 3s. The script returns the \n separated list: city, public IP, temperature, precipitation.
 
 utils.sh contains three functions, ms_to_human_friendly(), print_cmd_info() and print_info(). ms_to_human_friendly() converts measurements in ms to a human friendly format (e.g. minutes, hours). print_cmd_info() shows the duration and exit code of the last command, as well as the current user, hostname and working directory. Lastly, print_info() uses GET.py to show the initialization duration, the public IP, the city, the temperature and the precipitation. It also shows the current user, hostname and working directory.
