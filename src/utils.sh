@@ -2,16 +2,16 @@
 # 0: -
 # 31(red): temp
 # 32(green): environment
-# 33(yellow): -
-# 34(blue): branch
+# 33(yellow): city
+# 34(blue): pwd
 # 35(magenta): -
-# 36(cyan): IP
+# 36(cyan): branch
 # 91: ✖
 # 92: ✔
 # 93: user, hostname
-# 94: city, prec
+# 94: precipitation
 # 95: duration
-# 96: pwd
+# 96: IP
 
 . "${HOME}/.local/share/git-prompt.sh"
 
@@ -51,7 +51,7 @@ function print_cmd_info(){
     local cmd_duration_human_friendly="$(ms_to_human_friendly "${_ble_exec_time_tot}")"
 
     local branch="$(__git_ps1 "%s")"
-    local branch_decorated=$'\x1b[34;1m'"${branch}"$'\x1b[0m'
+    local branch_decorated=$'\x1b[36;1m'"${branch}"$'\x1b[0m'
     local environment_decorated=$'\x1b[32;1m'"${CONDA_DEFAULT_ENV}"$'\x1b[0m'
     if [ -n "${branch}" ]; then
         if [ -n "${CONDA_DEFAULT_ENV+x}" ]; then
@@ -67,7 +67,7 @@ function print_cmd_info(){
         fi
     fi
 
-    printf $'\x1b[95m%s\x1b[0m, %s, \x1b[93m%s\x1b[0m@\x1b[93m%s\x1b[0m:\x1b[96;3m%s\x1b[0m%s\n' "${cmd_duration_human_friendly}" "${exit_code_decorated}" "${USER}" "${HOSTNAME}" "${PWD}" "${suffix}"
+    printf $'\x1b[95m%s\x1b[0m, %s, \x1b[93m%s\x1b[0m@\x1b[93m%s\x1b[0m:\x1b[34;1m%s\x1b[0m%s\n' "${cmd_duration_human_friendly}" "${exit_code_decorated}" "${USER}" "${HOSTNAME}" "${PWD}" "${suffix}"
 }
 
 function print_info(){
@@ -78,7 +78,7 @@ function print_info(){
     reply=$(python3 "${HOME}/.local/share/bashrc_utils/src/GET.py")
     if [ "${?}" -eq "0" ]; then
         local reply_array=(${reply})
-        local internet=$'\x1b[36m'"${reply_array[1]}"$'\x1b[0m (\x1b[94m'"${reply_array[0]}"$'\x1b[0m-\x1b[31m'"${reply_array[2]}"$'°C\x1b[0m-\x1b[94m'"${reply_array[3]}"$'%\x1b[0m)'
+        local internet=$'\x1b[96m'"${reply_array[1]}"$'\x1b[0m (\x1b[33m'"${reply_array[0]}"$'\x1b[0m-\x1b[31m'"${reply_array[2]}"$'°C\x1b[0m-\x1b[94m'"${reply_array[3]}"$'%\x1b[0m)'
     else
         local internet="${reply}"
     fi
@@ -90,5 +90,5 @@ function print_info(){
         local suffix=""
     fi
 
-    printf $'\x1b[95m%s\x1b[0m, %s, \x1b[93m%s\x1b[0m@\x1b[93m%s\x1b[0m:\x1b[96;3m%s\x1b[0m%s\n' "${load_duration_human_friendly}" "${internet}" "${USER}" "${HOSTNAME}" "${PWD}" "${suffix}"
+    printf $'\x1b[95m%s\x1b[0m, %s, \x1b[93m%s\x1b[0m@\x1b[93m%s\x1b[0m:\x1b[34;1m%s\x1b[0m%s\n' "${load_duration_human_friendly}" "${internet}" "${USER}" "${HOSTNAME}" "${PWD}" "${suffix}"
 }
